@@ -39,7 +39,7 @@ class Conta{
     Console.ReadKey();
 
   }
-
+//TODO ENTENDER COMO PEGAR USUARIO DESEJADO E NAO O ULTIMO. 
   public static bool login (){
     string email;
     string senha;
