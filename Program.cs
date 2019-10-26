@@ -5,33 +5,33 @@
         public static void Main(string[] args)
         {
             bool status = true;
-            while (status == true)
+            while (status)
             {
-                C.c();
-                C.w("----- Menu MailBOX IDEAL -----");
-                C.w("1. Entrar\n2. Cadastrar\n3. Sair");
+                C.Cls();
+                C.W("----- Menu MailBOX IDEAL -----");
+                C.W("1. Entrar\n2. Cadastrar\n3. Sair");
 
-                string action = C.r();
-                C.c();
+                string action = C.R();
+                C.Cls();
 
                 switch (action)
                 {
                     case "1":
-                        C.w("ENTRAR");
-                        C.e();
+                        C.W("ENTRAR");
+                        C.E();
                         break;
 
                     case "2":
-                        Acesso.cadastro();
-                        C.w("Cadastrado com sucesso");
-                        C.e();
+                        Acesso.Cadastro();
+                        C.W("Cadastrado com sucesso");
+                        C.E();
                         break;
 
                     case "3":
-                        C.w("SAIR");
-                        C.e();
+                        C.W("SAIR");
+                        C.E();
                         status = false;
-                        C.c();
+                        C.Cls();
                         break;
                 }
             }

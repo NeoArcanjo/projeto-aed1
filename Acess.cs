@@ -7,26 +7,26 @@ namespace Aed1
 {
     class Acesso
     {
-        public static void cadastro()
+        public static void Cadastro()
         {
             string nome;
             string email;
             string senha;
 
             Console.Clear();
-            C.w("Digite seu nome: ");
-            nome = C.r();
-            C.w("Digite seu email: ");
-            email = C.r();
-            C.w("Digite sua senha: ");
-            senha = C.r();
+            C.W("Digite seu nome: ");
+            nome = C.R();
+            C.W("Digite seu email: ");
+            email = C.R();
+            C.W("Digite sua senha: ");
+            senha = C.R();
 
             var usuario = new Usuario(nome, email, senha);
-            salvar(usuario);
-            C.w(usuario.getNome());
+            Salvar(usuario);
+            C.W(usuario.Nome);
         }
 
-        public static void salvar(Usuario usuario)
+        public static void Salvar(Usuario usuario)
         {
             var data = new[]
             {

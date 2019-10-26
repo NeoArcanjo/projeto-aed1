@@ -1,31 +1,37 @@
+using System;
+
 namespace Aed1
 {
     class Usuario
     {
-        private string nome;
-        private string email;
-        private string senha;
-        
-        public Usuario(string n, string e, string s)
+        public Usuario(string nome = null, string email = null, string senha = null)
         {
-            nome = n;
-            email = e;
-            senha = s;
+            _nome = nome ?? throw new ArgumentNullException(nameof(nome));
+            _email = email ?? throw new ArgumentNullException(nameof(email));
+            _senha = senha ?? throw new ArgumentNullException(nameof(senha));
         }
 
-        public string getNome()
+        public string Nome
         {
-            return nome;
+            get => _nome;
+            set => _nome = value;
         }
 
-        public string getEmail()
+        public string Email
         {
-            return email;
+            get => _email;
+            set => _email = value;
         }
 
-        public string getSenha()
+        public string Senha
         {
-            return senha;
+            get => _senha;
+            set => _senha = value;
         }
+
+        private string _nome;
+        private string _email;
+        private string _senha;
+
     }
 }

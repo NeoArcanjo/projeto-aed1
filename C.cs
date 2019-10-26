@@ -4,22 +4,22 @@ namespace Aed1
 {
     class C
     {
-        public static void w(string texto)
+        public static void W(string texto)
         {
             Console.WriteLine(texto);
         }
 
-        public static string r()
+        public static string R()
         {
             return Console.ReadLine();
         }
 
-        public static void c()
+        public static void Cls()
         {
             Console.Clear();
         }
 
-        public static void e()
+        public static void E()
         {
             Console.ReadKey();
         }
