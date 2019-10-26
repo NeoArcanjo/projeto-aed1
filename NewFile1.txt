@@ -1,0 +1,15 @@
+using CsvHelper;
+
+public static List<string> ReadInCSV(string absolutePath)
+{
+    IEnumerable<string> allValues;
+
+    using (TextReader fileReader = File.OpenText(absolutePath))
+    {
+        var csv = new CsvReader(fileReader);
+        csv.Configuration.HasHeaderRecord = false;
+        allValues = csv.GetRecords<string>
+    }
+
+    return allValues.ToList<string>();
+}
