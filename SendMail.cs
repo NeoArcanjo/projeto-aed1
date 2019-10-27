@@ -57,7 +57,7 @@ namespace Aed1
             string senha;
             (bool, Usuario) login;
             var flag = true;
-            var usuario = new Usuario();
+            var usuario = new Usuario(0, "", "", "");
 
             while (flag)
             {
@@ -67,21 +67,25 @@ namespace Aed1
                 flag = !login.Item1;
                 if (flag)
                 {
-                    C.W("Mailbox ou senha inválidos.\nTente novamente!");
-                    C.E();
-                    C.Cls();
+                    Frame("Mailbox ou senha inválidos.\nTente novamente!");
                 }
                 else
                 {
                     usuario = login.Item2;
-                    C.Cls();
-                    C.W(usuario.Nome + "logado com sucesso!");
+                    Frame(usuario.Nome + " logado(a) com sucesso!");
                 }
             }
-
+            
             return usuario;
         }
 
+        static void Frame(string texto)
+        {
+            C.Cls();
+            C.W(texto);
+            C.E();
+            C.Cls();
+        }
         public static void WriteMail(
             string remetente, string destinatario, string assunto = null, string mensagem = null)
         {

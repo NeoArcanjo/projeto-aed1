@@ -166,7 +166,7 @@
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="NewFile1.txt" />
+      <Content Include="Email.csv" />
       <Content Include="Usuario.csv" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
