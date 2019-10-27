@@ -59,25 +59,7 @@ namespace Aed1
             return entrar(email, senha);
         }
 
-        public static void Contato()
-        {
-            var usuarios = new string[] { }; //GetUsuarios();
-            bool flag2 = false;
-            while (flag2 == false)
-            {
-                string amigo = C.Input("Digite o email do destinatário: ");
-                if (usuarios.Contains(amigo) == false)
-                {
-                    string resp = C.Input("Email do destinatário inválido.\nDigite novamente ou digite 3 para sair.");
-                    if (resp == "3") flag2 = true;
-                }
-                else
-                {
-                    //FUNCAO PARA PEGAR ESTE Usuario.
-                    //FUNCAO PARA ENVIAR MENSAGEM PARA ESTE USUARIO.
-                }
-            }
-        }
+        
 
 
         public static List<string[]> ReadInCsv(string absolutePath) //List<string>

@@ -1,44 +1,71 @@
+using System.Collections.Generic;
+
 namespace Aed1
 {
     static class SendMail
     {
+        static void Menu()
+        {
+            var option = C.Input("1. Ler\n2. Enviar\n3. Apagar\n4. Sair");
+            switch (option)
+            {
+                case "1":
+                    //FUNCAO LER MENSAGENS PROCURANDO PELO PROPRIO EMAIL
+                    break;
 
-switch (menu1){
-        case "1":
-        
-        
-        bool flag1 = false;
-        while(flag1 == false){
-          bool login = Acesso.GetLogin();
-          if (login == false){
-            
-          }
-          else{
-            
-            flag1 true
-        
-        C.w("1. Ler\n2. Enviar\n3. Apagar\n4. Sair");
+                case "2":
+                    var flag = true;
+                    var resp = "";
+                    while (flag)
+                    {
+                        var contato = C.Input("Destinatário: ");
+                        if (ValidateDestination(contato))
+                        {
+                            Email.WriteMail(contato);
+                            C.W("Email enviado com sucesso!");
+                        }
+                        else
+                        {
+                            resp = C.Input("Email do destinatário inválido.\nDigite novamente ou digite 3 para sair.");
+                            flag = (resp != "3");
+                        }
+                    }
 
-        string menu2 = C.R();
-
-        switch (menu2){
-          case "1":
-            //FUNCAO LER MENSAGENS PROCURANDO PELO PROPRIO EMAIL
-          
-          case "2":
-            bool flag3 = false;
-            while(flag3 == false){
-              var contato = Acesso.Contato();
-              Email.WriteMail(contato);
-              C.W("Email enviado com sucesso!")
-
-
+                    break;
             }
+
+            C.E();
+        }
+        
+        public static void WriteMail(string remetcontato)
+        {
             
-              }
+            assunto = C.Input("Digite o assunto da mensagem: ");
+            mensagem = C.Input("Digite sua mensagem: ");
+            // FUNCAO PARA ENVIAR MENSAGEM.
+        }
+        static public bool ValidateDestination(string contato)
+        {
+            var usuarios = AllEmails();
+            return usuarios.Contains(contato);
+        }
+
+        static List<string> AllEmails()
+        {
+            var bd = Acesso.GetUsuarios();
+            List<string> emails = new List<string>();
+            foreach (var row in bd)
+            {
+                emails.Add(row[2]);
             }
-            C.e();
-            break;
- 
+
+            return emails;
+        }
+        public static string MsgBody()
+        {
+            
+
+            return new string();
+        }
     }
 }
