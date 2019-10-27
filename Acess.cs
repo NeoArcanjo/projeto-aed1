@@ -2,11 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using CsvHelper;
-using Vanara.Extensions;
 
 namespace Aed1
 {
@@ -18,7 +15,7 @@ namespace Aed1
             string email;
             string senha;
 
-            Console.Clear();
+            C.Cls();
             nome = C.Input("Digite seu nome: ");
             email = C.Input("Digite seu email: ");
             email = email.Contains('@') ? email : email + "@mailbox.ideal";
@@ -27,20 +24,86 @@ namespace Aed1
             var usuario = new Usuario(0, nome, email, senha);
             Salvar(usuario);
             C.W(usuario.Nome);
+            C.W("Cadastrado com sucesso");
         }
 
-        /*
-        public static string[] Type(string objeto)
+        public static string[,] GetUsuarios()
         {
-            string pattern = @"[.]\w+";
-            var str = new String[2];
-            foreach (Match m in Regex.Matches(objeto, pattern))
-            {
-                str[m.Index] = m.Value;
-            }
-            return str;
+            var vetor = new string[] { };
+            var matrix = new string[,] { };
+            /*
+             * 
+             */
+            return matrix;
         }
-        */
+
+
+        public static bool entrar(string email, string senha)
+        {
+            /*
+            var usuarios = GetUsuarios();
+            foreach (Array usuario in usuarios)
+            {
+                if (usuario[1] == email && usuario[2] == senha)
+                {
+                    return true;
+                }
+            }
+
+            C.W("");
+            */
+            return false;
+        }
+
+        public static bool GetLogin()
+        {
+            string email;
+            string senha;
+
+            email = C.Input("Digite seu mailBOX: ");
+            senha = C.Input("Digite sua senha: ");
+
+            return entrar(email, senha);
+        }
+
+        public static void Contato()
+        {
+            var usuarios = new string[] { }; //GetUsuarios();
+            bool flag2 = false;
+            while (flag2 == false)
+            {
+                string amigo = C.Input("Digite o email do destinatário: ");
+                if (usuarios.Contains(amigo) == false)
+                {
+                    string resp = C.Input("Email do destinatário inválido.\nDigite novamente ou digite 3 para sair.");
+                    if (resp == "3") flag2 = true;
+                }
+                else
+                {
+                    //FUNCAO PARA PEGAR ESTE Usuario.
+                    //FUNCAO PARA ENVIAR MENSAGEM PARA ESTE USUARIO.
+                }
+            }
+        }
+
+
+        public static void ReadInCsv(string absolutePath)  //List<string>
+        {
+            C.Cls();
+            var arrIn = new String[4];
+            List<string> allValues;
+            using (var reader = new StreamReader(absolutePath))
+            {
+                var header = reader.ReadLine();
+                var row = reader.ReadLine();
+                var collumns=row.Split(';');
+                foreach (var VARIABLE in collumns)
+                {
+                    C.W(VARIABLE);
+                }
+            }
+            //return allValues.ToList<string>();
+        }
 
         public static void Salvar(Object objeto)
         {
@@ -50,7 +113,7 @@ namespace Aed1
                 objeto,
             };
             var filename = objeto.ToString().Replace('.', '/');
-            var file = "/home/sylon/RiderProjects/"+filename+".csv";
+            var file = "/home/sylon/RiderProjects/" + filename + ".csv";
             using (var reader = new StreamReader(file))
             {
                 var row = reader.Read();
@@ -64,13 +127,7 @@ namespace Aed1
                 csvWriter.Configuration.Delimiter = ";";
                 csvWriter.Configuration.HasHeaderRecord = header;
                 csvWriter.Configuration.AutoMap(objeto.GetType());
-                //if (header)
-                //{
-                //    csvWriter.WriteHeader<Usuario>();
-                //   csvWriter.NextRecord();
-                //}
                 csvWriter.WriteRecords(data);
-
                 writer.Flush();
                 Console.WriteLine(file);
             }
