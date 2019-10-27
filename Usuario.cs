@@ -1,16 +1,23 @@
 using System;
+using System.Collections.Generic;
 
 namespace Aed1
 {
     class Usuario
     {
-        public Usuario(string nome = null, string email = null, string senha = null)
+        public Usuario(int id = default, string nome = null, string email = null, string senha = null)
         {
+            _id = id;
             _nome = nome ?? throw new ArgumentNullException(nameof(nome));
             _email = email ?? throw new ArgumentNullException(nameof(email));
             _senha = senha ?? throw new ArgumentNullException(nameof(senha));
         }
-
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
+        }
+        
         public string Nome
         {
             get => _nome;
@@ -29,9 +36,17 @@ namespace Aed1
             set => _senha = value;
         }
 
+        public void AddContato(string Nome)
+        {
+            _contatos.Add(Nome);
+        }
+        
+        private int _id;
         private string _nome;
         private string _email;
         private string _senha;
+        private List<string> _contatos;
 
+        public List<string> Contatos => _contatos;
     }
 }

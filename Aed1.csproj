@@ -38,14 +38,120 @@
         </Reference>
         <Reference Include="Microsoft.CSharp" />
         <Reference Include="mscorlib" />
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-          <HintPath>packages\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
+        <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c">
+          <HintPath>packages\NLog.4.6.5\lib\net45\NLog.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="NLog.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c">
+          <HintPath>packages\NLog.Windows.Forms.4.3.0\lib\net35\NLog.Windows.Forms.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Simplify.Windows.Forms, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>packages\Simplify.Windows.Forms.1.1.0\lib\net452\Simplify.Windows.Forms.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.Configuration" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="System.Design" />
+        <Reference Include="System.DirectoryServices" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.IO.Compression" />
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="System.ServiceModel" />
+        <Reference Include="System.Transactions" />
+        <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+          <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
+        <Reference Include="Vanara.Core, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.Core.3.1.1\lib\net45\Vanara.Core.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.AclUI, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.AclUI.3.1.1\lib\net45\Vanara.PInvoke.AclUI.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.ComCtl32, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.ComCtl32.3.1.1\lib\net45\Vanara.PInvoke.ComCtl32.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.CredUI, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.CredUI.3.1.1\lib\net45\Vanara.PInvoke.CredUI.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.Cryptography, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.Cryptography.3.1.1\lib\net45\Vanara.PInvoke.Cryptography.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.DwmApi, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.DwmApi.3.1.1\lib\net45\Vanara.PInvoke.DwmApi.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.Gdi32, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.Gdi32.3.1.1\lib\net45\Vanara.PInvoke.Gdi32.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.Kernel32, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.Kernel32.3.1.1\lib\net45\Vanara.PInvoke.Kernel32.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.Mpr, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.Mpr.3.1.1\lib\net45\Vanara.PInvoke.Mpr.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.NTDSApi, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.NTDSApi.3.1.1\lib\net45\Vanara.PInvoke.NTDSApi.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.Ole, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.Ole.3.1.1\lib\net45\Vanara.PInvoke.Ole.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.SearchApi, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.SearchApi.3.1.1\lib\net45\Vanara.PInvoke.SearchApi.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.Security, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.Security.3.1.1\lib\net45\Vanara.PInvoke.Security.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.Shared, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.Shared.3.1.1\lib\net45\Vanara.PInvoke.Shared.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.Shell32, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.Shell32.3.1.1\lib\net45\Vanara.PInvoke.Shell32.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.ShlwApi, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.ShlwApi.3.1.1\lib\net45\Vanara.PInvoke.ShlwApi.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.User32, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.User32.3.1.1\lib\net45\Vanara.PInvoke.User32.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.PInvoke.UxTheme, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.PInvoke.UxTheme.3.1.1\lib\net45\Vanara.PInvoke.UxTheme.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.Security, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.Security.3.1.1\lib\net45\Vanara.Security.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.Windows.Forms, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.Windows.Forms.3.1.1\lib\net45\Vanara.Windows.Forms.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Vanara.Windows.Shell, Version=3.1.1.0, Culture=neutral, PublicKeyToken=c37e4080322237fa">
+          <HintPath>packages\Vanara.Windows.Shell.3.1.1\lib\net45\Vanara.Windows.Shell.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Acess.cs" />
@@ -60,6 +166,7 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="NewFile1.txt" />
+      <Content Include="Usuario.csv" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

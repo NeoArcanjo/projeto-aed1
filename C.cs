@@ -13,6 +13,12 @@ namespace Aed1
         {
             return Console.ReadLine();
         }
+        
+        public static string Input(string texto = "")
+        {
+            Console.WriteLine(texto);
+            return Console.ReadLine();
+        }
 
         public static void Cls()
         {
