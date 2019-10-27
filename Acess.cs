@@ -7,51 +7,44 @@ using CsvHelper;
 
 namespace Aed1
 {
-    class Acesso
+    static class Acesso
     {
         public static void Cadastro()
         {
+            int id;
             string nome;
             string email;
             string senha;
 
             C.Cls();
+
+            id = LastId("/home/sylon/RiderProjects/Aed1/Usuario.csv") + 1;
             nome = C.Input("Digite seu nome: ");
             email = C.Input("Digite seu email: ");
             email = email.Contains('@') ? email : email + "@mailbox.ideal";
             senha = C.Input("Digite sua senha: ");
 
-            var usuario = new Usuario(0, nome, email, senha);
+            var usuario = new Usuario(id, nome, email, senha);
             Salvar(usuario);
-            C.W(usuario.Nome);
-            C.W("Cadastrado com sucesso");
+            C.W(usuario.Nome + " cadastrado(a) com sucesso");
         }
 
-        public static string[,] GetUsuarios()
+        public static List<string[]> GetUsuarios()
         {
-            var vetor = new string[] { };
-            var matrix = new string[,] { };
-            /*
-             * 
-             */
-            return matrix;
+            return ReadInCsv("/home/sylon/RiderProjects/Aed1/Usuario.csv");
         }
-
 
         public static bool entrar(string email, string senha)
         {
-            /*
             var usuarios = GetUsuarios();
-            foreach (Array usuario in usuarios)
+            foreach (string[] usuario in usuarios)
             {
-                if (usuario[1] == email && usuario[2] == senha)
+                if (usuario[2] == email && usuario[3] == senha)
                 {
                     return true;
                 }
             }
 
-            C.W("");
-            */
             return false;
         }
 
@@ -60,7 +53,7 @@ namespace Aed1
             string email;
             string senha;
 
-            email = C.Input("Digite seu mailBOX: ");
+            email = C.Input("Digite seu mailbox: ");
             senha = C.Input("Digite sua senha: ");
 
             return entrar(email, senha);
@@ -87,49 +80,78 @@ namespace Aed1
         }
 
 
-        public static void ReadInCsv(string absolutePath)  //List<string>
+        public static List<string[]> ReadInCsv(string absolutePath) //List<string>
         {
             C.Cls();
-            var arrIn = new String[4];
-            List<string> allValues;
+            var collumns = new String[4];
+            List<string[]> allValues = new List<string[]>();
             using (var reader = new StreamReader(absolutePath))
             {
                 var header = reader.ReadLine();
-                var row = reader.ReadLine();
-                var collumns=row.Split(';');
-                foreach (var VARIABLE in collumns)
+                string row;
+                while (!reader.EndOfStream)
                 {
-                    C.W(VARIABLE);
+                    row = reader.ReadLine();
+                    collumns = row.Split(';');
+                    allValues.Add(collumns);
                 }
             }
-            //return allValues.ToList<string>();
+
+            return allValues;
+        }
+
+        public static int LastId(string absolutePath) //List<string>
+        {
+            var id = new int();
+            var collumns = new String[4];
+            using (var reader = new StreamReader(absolutePath))
+            {
+                string row;
+                var header = reader.ReadLine();
+                while (!reader.EndOfStream)
+                {
+                    row = reader.ReadLine();
+                    collumns = row.Split(';');
+                    id = int.Parse(collumns[0]);
+                }
+            }
+            return id;
+        }
+
+        public static int CountLinesCsv(string file)
+        {
+            var count = 0;
+            using (var reader = new StreamReader(file))
+            {
+                string row;
+                while (!reader.EndOfStream)
+                {
+                    row = reader.ReadLine();
+                    count++;
+                }
+            }
+            return count;
         }
 
         public static void Salvar(Object objeto)
         {
-            bool header;
-            var data = new[]
-            {
-                objeto,
-            };
             var filename = objeto.ToString().Replace('.', '/');
             var file = "/home/sylon/RiderProjects/" + filename + ".csv";
-            using (var reader = new StreamReader(file))
-            {
-                var row = reader.Read();
-                C.W(row.ToString());
-                header = row <= 0;
-            }
-
+            var header = CountLinesCsv(file) == 0;
             using (var writer = new StreamWriter(file, true, Encoding.UTF8))
             using (var csvWriter = new CsvWriter(writer))
             {
                 csvWriter.Configuration.Delimiter = ";";
-                csvWriter.Configuration.HasHeaderRecord = header;
+                csvWriter.Configuration.HasHeaderRecord = true;
                 csvWriter.Configuration.AutoMap(objeto.GetType());
-                csvWriter.WriteRecords(data);
+                if (header)
+                {
+                    csvWriter.WriteHeader(objeto.GetType());
+                    csvWriter.NextRecord();
+                }
+                csvWriter.WriteRecord(objeto);
+                csvWriter.NextRecord();
                 writer.Flush();
-                Console.WriteLine(file);
             }
         }
     }
