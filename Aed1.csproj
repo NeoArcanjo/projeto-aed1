@@ -154,20 +154,22 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Acess.cs" />
-        <Compile Include="C.cs" />
-        <Compile Include="Email.cs" />
+        <Compile Include="Class\Email.cs" />
+        <Compile Include="Class\Usuario.cs" />
+        <Compile Include="Extras\C.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="SendMail.cs" />
-        <Compile Include="Usuario.cs" />
+        <Compile Include="Static Class\Acess.cs" />
+        <Compile Include="Static Class\SendMail.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="Email.csv" />
-      <Content Include="Usuario.csv" />
+      <Content Include="Files\Email.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Files\Usuario.csv" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

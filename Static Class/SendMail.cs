@@ -1,7 +1,8 @@
-using System;
 using System.Collections.Generic;
+using Aed1.Class;
+using Aed1.Extras;
 
-namespace Aed1
+namespace Aed1.Static_Class
 {
     static class SendMail
     {
@@ -15,7 +16,7 @@ namespace Aed1
                 {
                     case "1":
                     {
-                        //FUNCAO LER MENSAGENS PROCURANDO PELO PROPRIO EMAIL
+                        C.Frame("Em desenvolvimento");
                         break;
                     }
                     case "2":
@@ -37,17 +38,22 @@ namespace Aed1
                                 flag2 = (resp != "3");
                             }
                         }
-
                         break;
                     }
+                    
                     case "3":
                     {
+                        C.Frame("Em desenvolvimento");
+                        break;
+                    }
+                    case "4":
+                    {
+                        C.Cls();
+                        C.W("Pressione ENTER para retornar ao Menu!!");
                         flag = false;
                         break;
                     }
                 }
-
-                C.E();
             }
         }
 
@@ -67,25 +73,19 @@ namespace Aed1
                 flag = !login.Item1;
                 if (flag)
                 {
-                    Frame("Mailbox ou senha inválidos.\nTente novamente!");
+                    C.Frame("Mailbox ou senha inválidos.\nTente novamente!");
                 }
                 else
                 {
                     usuario = login.Item2;
-                    Frame(usuario.Nome + " logado(a) com sucesso!");
+                    C.Frame(usuario.Nome + " logado(a) com sucesso!");
                 }
             }
             
             return usuario;
         }
 
-        static void Frame(string texto)
-        {
-            C.Cls();
-            C.W(texto);
-            C.E();
-            C.Cls();
-        }
+      
         public static void WriteMail(
             string remetente, string destinatario, string assunto = null, string mensagem = null)
         {

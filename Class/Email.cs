@@ -1,9 +1,7 @@
 using System;
 
-namespace Aed1
+namespace Aed1.Class
 {
-    //sleep = Thread.Sleep(2000);
-
     class Email
     {
         public int Id

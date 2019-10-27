@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Aed1.Class;
+using Aed1.Extras;
 using CsvHelper;
 
-namespace Aed1
+namespace Aed1.Static_Class
 {
     static class Acesso
     {
+        public static string userfile = "/home/sylon/RiderProjects/Aed1/Files/Usuario.csv";
         public static void Cadastro()
         {
             int id;
@@ -18,7 +21,8 @@ namespace Aed1
 
             C.Cls();
 
-            id = LastId("/home/sylon/RiderProjects/Aed1/Usuario.csv") + 1;
+            id = LastId(Path.GetDirectoryName("/home/sylon/RiderProjects/Aed1/Files/Usuario.csv")) + 1;
+            C.W(id.ToString());
             nome = C.Input("Digite seu nome: ");
             email = C.Input("Digite seu email: ");
             email = email.Contains('@') ? email : email + "@mailbox.ideal";
@@ -31,7 +35,7 @@ namespace Aed1
 
         public static List<string[]> GetUsuarios()
         {
-            return ReadInCsv("/home/sylon/RiderProjects/Aed1/Usuario.csv");
+            return ReadInCsv(userfile);
         }
 
         public static (bool, Usuario) Entrar(string email, string senha)
@@ -44,25 +48,23 @@ namespace Aed1
                     return (true, new Usuario(int.Parse(usuario[0]),usuario[1],usuario[2],usuario[3]));
                 }
             }
-            return (false, new Usuario());
+            return (false, new Usuario(0, "", "", ""));
         }
-
-        
         
         public static List<string[]> ReadInCsv(string absolutePath) //Limst<string>
         {
             C.Cls();
-            var collumns = new String[4];
             List<string[]> allValues = new List<string[]>();
             using (var reader = new StreamReader(absolutePath))
             {
-                var header = reader.ReadLine();
-                string row;
                 while (!reader.EndOfStream)
                 {
-                    row = reader.ReadLine();
-                    collumns = row.Split(';');
-                    allValues.Add(collumns);
+                    var row = reader.ReadLine();
+                    if (row != null)
+                    {
+                        var columns = row.Split(';');
+                        allValues.Add(columns);
+                    }
                 }
             }
 
@@ -76,7 +78,7 @@ namespace Aed1
             using (var reader = new StreamReader(absolutePath))
             {
                 string row;
-                var header = reader.ReadLine();
+                reader.ReadLine();
                 while (!reader.EndOfStream)
                 {
                     row = reader.ReadLine();
@@ -92,10 +94,8 @@ namespace Aed1
             var count = 0;
             using (var reader = new StreamReader(file))
             {
-                string row;
-                while (!reader.EndOfStream)
+                while (reader.ReadLine()!="")
                 {
-                    row = reader.ReadLine();
                     count++;
                 }
             }
@@ -104,8 +104,9 @@ namespace Aed1
 
         public static void Salvar(Object objeto)
         {
-            var filename = objeto.ToString().Replace('.', '/');
+            var filename = objeto.ToString().Replace('.', '/').Replace("Class","Files");
             var file = "/home/sylon/RiderProjects/" + filename + ".csv";
+            C.W(file);
             var header = CountLinesCsv(file) == 0;
             using (var writer = new StreamWriter(file, true, Encoding.UTF8))
             using (var csvWriter = new CsvWriter(writer))

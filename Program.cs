@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Aed1.Extras;
+using Aed1.Static_Class;
 
 namespace Aed1
 {
@@ -10,13 +10,7 @@ namespace Aed1
             bool status = true;
             while (status)
             {
-                C.Cls();
-                C.W("----- Menu MailBOX IDEAL -----");
-                C.W("1. Entrar\n2. Cadastrar\n3. Sair");
-
-                string action = C.R();
-                C.Cls();
-
+                string action =C.InputFrame("----- Menu MailBOX IDEAL -----\n"+"1. Entrar\n2. Cadastrar\n3. Sair");
                 switch (action)
                 {
                     case "1":
@@ -33,10 +27,9 @@ namespace Aed1
                         break;
 
                     case "3":
-                        C.W("SAIR");
-                        C.E();
                         status = false;
                         C.Cls();
+                        C.W("Até logo!");
                         break;
                 }
             }

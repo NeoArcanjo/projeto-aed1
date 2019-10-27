@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Aed1
+namespace Aed1.Class
 {
     class Usuario
     {

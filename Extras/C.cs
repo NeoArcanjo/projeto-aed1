@@ -1,6 +1,6 @@
 using System;
 
-namespace Aed1
+namespace Aed1.Extras
 {
     class C
     {
@@ -28,6 +28,22 @@ namespace Aed1
         public static void E()
         {
             Console.ReadKey();
+        }
+        
+        public static void Frame(string texto)
+        {
+            Cls();
+            W(texto);
+            E();
+            Cls();
+        }
+        
+        public static string InputFrame(string texto)
+        {
+            Cls();
+            var output = Input(texto);
+            Cls();
+            return output;
         }
     }
 }
