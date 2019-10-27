@@ -15,7 +15,6 @@ namespace Aed1
         public int Id
         {
             get => _id;
-            set => _id = value;
         }
         
         public string Nome

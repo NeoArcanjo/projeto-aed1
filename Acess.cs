@@ -34,35 +34,22 @@ namespace Aed1
             return ReadInCsv("/home/sylon/RiderProjects/Aed1/Usuario.csv");
         }
 
-        public static bool entrar(string email, string senha)
+        public static (bool, Usuario) Entrar(string email, string senha)
         {
             var usuarios = GetUsuarios();
             foreach (string[] usuario in usuarios)
             {
                 if (usuario[2] == email && usuario[3] == senha)
                 {
-                    return true;
+                    return (true, new Usuario(int.Parse(usuario[0]),usuario[1],usuario[2],usuario[3]));
                 }
             }
-
-            return false;
-        }
-
-        public static bool GetLogin()
-        {
-            string email;
-            string senha;
-
-            email = C.Input("Digite seu mailbox: ");
-            senha = C.Input("Digite sua senha: ");
-
-            return entrar(email, senha);
+            return (false, new Usuario());
         }
 
         
-
-
-        public static List<string[]> ReadInCsv(string absolutePath) //List<string>
+        
+        public static List<string[]> ReadInCsv(string absolutePath) //Limst<string>
         {
             C.Cls();
             var collumns = new String[4];

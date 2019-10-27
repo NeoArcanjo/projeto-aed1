@@ -1,56 +1,102 @@
+using System;
 using System.Collections.Generic;
 
 namespace Aed1
 {
     static class SendMail
     {
-        static void Menu()
+        public static void Menu(string username)
         {
-            var option = C.Input("1. Ler\n2. Enviar\n3. Apagar\n4. Sair");
-            switch (option)
+            var flag = true;
+            while (flag)
             {
-                case "1":
-                    //FUNCAO LER MENSAGENS PROCURANDO PELO PROPRIO EMAIL
-                    break;
-
-                case "2":
-                    var flag = true;
-                    var resp = "";
-                    while (flag)
+                var option = C.Input("1. Ler\n2. Enviar\n3. Apagar\n4. Sair");
+                switch (option)
+                {
+                    case "1":
                     {
-                        var contato = C.Input("Destinatário: ");
-                        if (ValidateDestination(contato))
-                        {
-                            Email.WriteMail(contato);
-                            C.W("Email enviado com sucesso!");
-                        }
-                        else
-                        {
-                            resp = C.Input("Email do destinatário inválido.\nDigite novamente ou digite 3 para sair.");
-                            flag = (resp != "3");
-                        }
+                        //FUNCAO LER MENSAGENS PROCURANDO PELO PROPRIO EMAIL
+                        break;
                     }
+                    case "2":
+                    {
+                        var flag2 = true;
+                        var resp = "";
+                        while (flag2)
+                        {
+                            var contato = C.Input("Destinatário: ");
+                            if (ValidateDestination(contato))
+                            {
+                                WriteMail(username, contato, "", "");
+                                C.W("Email enviado com sucesso!");
+                            }
+                            else
+                            {
+                                resp = C.Input(
+                                    "Email do destinatário inválido.\nDigite novamente ou digite 3 para sair.");
+                                flag2 = (resp != "3");
+                            }
+                        }
 
-                    break;
+                        break;
+                    }
+                    case "3":
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+
+                C.E();
+            }
+        }
+
+        public static Usuario GetLogin()
+        {
+            string email;
+            string senha;
+            (bool, Usuario) login;
+            var flag = true;
+            var usuario = new Usuario();
+
+            while (flag)
+            {
+                email = C.Input("Digite seu mailbox: ");
+                senha = C.Input("Digite sua senha: ");
+                login = Acesso.Entrar(email, senha);
+                flag = !login.Item1;
+                if (flag)
+                {
+                    C.W("Mailbox ou senha inválidos.\nTente novamente!");
+                    C.E();
+                    C.Cls();
+                }
+                else
+                {
+                    usuario = login.Item2;
+                    C.Cls();
+                    C.W(usuario.Nome + "logado com sucesso!");
+                }
             }
 
-            C.E();
+            return usuario;
         }
-        
-        public static void WriteMail(string remetcontato)
+
+        public static void WriteMail(
+            string remetente, string destinatario, string assunto = null, string mensagem = null)
         {
-            
             assunto = C.Input("Digite o assunto da mensagem: ");
             mensagem = C.Input("Digite sua mensagem: ");
             // FUNCAO PARA ENVIAR MENSAGEM.
         }
+
         static public bool ValidateDestination(string contato)
         {
-            var usuarios = AllEmails();
+            var usuarios = AllAccountEmails();
             return usuarios.Contains(contato);
         }
 
-        static List<string> AllEmails()
+        static List<string> AllAccountEmails()
         {
             var bd = Acesso.GetUsuarios();
             List<string> emails = new List<string>();
@@ -58,14 +104,14 @@ namespace Aed1
             {
                 emails.Add(row[2]);
             }
-
             return emails;
         }
-        public static string MsgBody()
-        {
-            
 
-            return new string();
-        }
+//        public static string MsgBody()
+//        {
+//            
+//
+//            return new string();
+//        }
     }
 }

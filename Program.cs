@@ -16,24 +16,14 @@ namespace Aed1
 
                 string action = C.R();
                 C.Cls();
-                
+
                 switch (action)
                 {
                     case "1":
-                        var flag = true;
-                        while (flag)
-                        {
-                            var login = Acesso.GetLogin();
-                            if (login) flag = false;
-                            else
-                            {
-                                C.W("mailBOX ou senha inválidos.\nTente novamente!");
-                                C.E();
-                                C.Cls();
-                            }
-                        }
-                        C.Cls();
-                        C.W("Usuario logado com sucesso!");
+                    {
+                        var sessao = SendMail.GetLogin();
+                        SendMail.Menu(sessao.Nome);
+                    }
                         C.E();
                         break;
 
