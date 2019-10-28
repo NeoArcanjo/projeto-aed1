@@ -166,10 +166,21 @@
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="Files\Email.csv">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
+      <Content Include="Files\1\Enviados\fdfsdfd.csv" />
+      <Content Include="Files\1\Enviados\fsdfsfsd.csv" />
       <Content Include="Files\Usuario.csv" />
+      <Content Include="README.md" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Files\1\Contatos" />
+      <Folder Include="Files\1\Lixeira" />
+      <Folder Include="Files\1\Rascunhos" />
+      <Folder Include="Files\1\Recebidos" />
+      <Folder Include="Files\2\Contatos" />
+      <Folder Include="Files\2\Enviados" />
+      <Folder Include="Files\2\Lixeira" />
+      <Folder Include="Files\2\Rascunhos" />
+      <Folder Include="Files\2\Recebidos" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

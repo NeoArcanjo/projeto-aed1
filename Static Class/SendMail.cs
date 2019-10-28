@@ -6,7 +6,7 @@ namespace Aed1.Static_Class
 {
     static class SendMail
     {
-        public static void Menu(string username)
+        public static void Menu(string usermail)
         {
             var flag = true;
             while (flag)
@@ -21,6 +21,7 @@ namespace Aed1.Static_Class
                     }
                     case "2":
                     {
+                        C.Cls();
                         var flag2 = true;
                         var resp = "";
                         while (flag2)
@@ -28,8 +29,12 @@ namespace Aed1.Static_Class
                             var contato = C.Input("Destinatário: ");
                             if (ValidateDestination(contato))
                             {
-                                WriteMail(username, contato, "", "");
-                                C.W("Email enviado com sucesso!");
+                                flag2 = false;
+                                var assunto = C.Input(("Assunto: "));
+                                C.W("");
+                                var mensagem = C.Input("Mensagem: ");
+                                WriteMail(usermail, contato, assunto, mensagem);
+                                C.Frame("Email enviado com sucesso!");
                             }
                             else
                             {
@@ -85,13 +90,37 @@ namespace Aed1.Static_Class
             return usuario;
         }
 
-      
+        public static void SalvarEmail(Email email, int idRem, int idDest)
+        {
+            var filename = email.Assunto;
+            var file1 = "/home/sylon/RiderProjects/Aed1/Files/" + idRem + "/Enviados/" + filename + ".csv";
+            C.Touch(file1);
+            Acesso.Salvar(email, file1);
+            var file2 = "/home/sylon/RiderProjects/Aed1/Files/" + idDest + "/Recebidos/" + filename + ".csv";
+            C.Touch(file2);
+            Acesso.Salvar(email, file2);
+        }
+
+        public static int IdUserMail(string email)
+        {
+            var users = Acesso.GetUsuarios();
+            foreach (var user in users)
+            {
+                if (user[2] == email)
+                {
+                    return int.Parse(user[0]);
+                }
+            }
+            return 0;
+        }
+        
         public static void WriteMail(
             string remetente, string destinatario, string assunto = null, string mensagem = null)
         {
-            assunto = C.Input("Digite o assunto da mensagem: ");
-            mensagem = C.Input("Digite sua mensagem: ");
-            // FUNCAO PARA ENVIAR MENSAGEM.
+            var idRem = IdUserMail(remetente);
+            var idDest = IdUserMail(destinatario);
+            var email = new Email(remetente, destinatario, assunto, mensagem);
+            SalvarEmail(email, idRem, idDest);
         }
 
         static public bool ValidateDestination(string contato)

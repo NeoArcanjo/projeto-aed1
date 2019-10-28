@@ -4,11 +4,6 @@ namespace Aed1.Class
 {
     class Email
     {
-        public int Id
-        {
-            get => _id;
-        }
-
         public string Remetente
         {
             get => _remetente;
@@ -37,9 +32,8 @@ namespace Aed1.Class
             get => _dateTime;
         }
 
-        public Email(int id, string remetente = null, string destinatario = null, string assunto = null, string mensagem = null)
+        public Email(string remetente = null, string destinatario = null, string assunto = null, string mensagem = null)
         {
-            _id = id;
             _remetente = remetente;
             _destinatario = destinatario;
             _assunto = assunto;
@@ -47,7 +41,6 @@ namespace Aed1.Class
             _dateTime = DateTime.Now;
         }
 
-        private int _id;
         private string _remetente;
         private string _destinatario;
         private string _assunto;

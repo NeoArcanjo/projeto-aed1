@@ -1,4 +1,5 @@
-﻿using Aed1.Extras;
+﻿using System.IO;
+using Aed1.Extras;
 using Aed1.Static_Class;
 
 namespace Aed1
@@ -10,13 +11,13 @@ namespace Aed1
             bool status = true;
             while (status)
             {
-                string action =C.InputFrame("----- Menu MailBOX IDEAL -----\n"+"1. Entrar\n2. Cadastrar\n3. Sair");
+                string action =C.InputFrame("----- Menu MailBOX IDEAL -----\n"+"1. Entrar\n2. Cadastrar\n3. Sair\n");
                 switch (action)
                 {
                     case "1":
                     {
                         var sessao = SendMail.GetLogin();
-                        SendMail.Menu(sessao.Nome);
+                        SendMail.Menu(sessao.Email);
                     }
                         C.E();
                         break;
